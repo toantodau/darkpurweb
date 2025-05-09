@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DARKPUR - Giới thiệu</title>
+    <link rel="icon" href="./image/logo.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Reset background styles */
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fff5f6, #ffe4e8);
+            overflow-x: hidden;
+        }
+
+        /* Sakura Background */
+        .sakura-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255, 192, 203, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 182, 193, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255, 218, 185, 0.1) 0%, transparent 50%);
+        }
+
+        /* Sakura Petals */
+        .sakura-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .sakura {
+            position: absolute;
+            background: #ffd1dc;
+            border-radius: 150% 0 150% 0;
+            animation: sakuraFall linear infinite;
+            opacity: 0.7;
+            filter: blur(0.5px);
+        }
+
+        @keyframes sakuraFall {
+            0% {
+                transform: translate(0, -10px) rotate(0deg) scale(1);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translate(50px, 50vh) rotate(180deg) scale(0.8);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translate(100px, 100vh) rotate(360deg) scale(0.6);
+                opacity: 0;
+            }
+        }
+
+        /* Main Content */
+        main {
+            position: relative;
+            z-index: 2;
+            padding-top: 80px; /* Space for fixed header */
+        }
+
+        .about-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Logo Section */
+        .logo-section {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .logo-container {
+            display: inline-block;
+            position: relative;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 30px rgba(255, 192, 203, 0.3),
+                inset 0 0 20px rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+            animation: floatLogo 6s ease-in-out infinite;
+        }
+
+        @keyframes floatLogo {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .logo-container img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255, 192, 203, 0.1), rgba(255, 182, 193, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(255, 192, 203, 0.2);
+        }
+
+        .content-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: #ff69b4;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .card-title {
+            color: #ff69b4;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .card-content {
+            color: #666;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        /* Mission Statement */
+        .mission-statement {
+            text-align: center;
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .mission-statement h2 {
+            color: #ff69b4;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .mission-statement p {
+            color: #666;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logo-container img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mission-statement {
+                padding: 2rem;
+                margin: 2rem 1rem;
+            }
+
+            .mission-statement h2 {
+                font-size: 1.8rem;
+            }
+
+            .mission-statement p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sakura Background -->
+    <div class="sakura-bg"></div>
+    <div class="sakura-container" id="sakura-container"></div>
+
+    <!-- Keep only the navigation menu from style.css -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="./image/logo.png" alt="DARKPUR Logo" class="logo-img">
+                <span>DARKPUR</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="windows.html">Windows</a></li>
+                <li><a href="office.html">Microsoft 365</a></li>
+                <li><a href="tools.html">Công Cụ</a></li>
+                <li><a href="about.html" class="active">Giới thiệu</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="about-section">
+            <div class="logo-section">
+                <div class="logo-container">
+                    <img src="./image/logo.png" alt="DARKPUR Logo">
+                </div>
+            </div>
+
+            <div class="mission-statement">
+                <h2>DARKPUR</h2>
+                <p>Chào mừng bạn đến với DARKPUR - Nơi chia sẻ kiến thức và công cụ hữu ích cho cộng đồng. Chúng tôi cam kết mang đến những giải pháp tốt nhất cho người dùng, đặc biệt là các bạn học sinh, sinh viên.</p>
+                <p>Với sứ mệnh chia sẻ và hỗ trợ, DARKPUR luôn nỗ lực cập nhật và cải thiện dịch vụ để mang đến trải nghiệm tốt nhất cho người dùng.</p>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="card-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="card-title">An toàn & Đáng tin cậy</h3>
+                    <p class="card-content">Tất cả công cụ và phần mềm đều được kiểm tra kỹ lưỡng để đảm bảo an toàn cho người dùng.</p>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="card-title">Nhanh chóng & Hiệu quả</h3>
+                    <p class="card-content">Tối ưu hóa quy trình tải xuống và cài đặt, giúp bạn tiết kiệm thời gian.</p>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-icon">
+                        <i class="fas fa-sync"></i>
+                    </div>
+                    <h3 class="card-title">Cập nhật thường xuyên</h3>
+                    <p class="card-content">Luôn cập nhật các phiên bản mới nhất và công cụ hữu ích cho người dùng.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 DARKPUR. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Enhanced Sakura Animation
+        function createSakura() {
+            const sakura = document.createElement('div');
+            sakura.className = 'sakura';
+            
+            // Random size between 8 and 15px for more natural look
+            const size = Math.random() * 7 + 8;
+            sakura.style.width = `${size}px`;
+            sakura.style.height = `${size}px`;
+            
+            // Random starting position
+            sakura.style.left = `${Math.random() * 100}%`;
+            sakura.style.top = '-20px';
+            
+            // Random animation duration between 8 and 15 seconds for slower, more natural fall
+            sakura.style.animationDuration = `${Math.random() * 7 + 8}s`;
+            
+            // Random rotation for more natural movement
+            sakura.style.transform = `rotate(${Math.random() * 360}deg)`;
+            
+            document.getElementById('sakura-container').appendChild(sakura);
+            
+            // Remove sakura after animation
+            sakura.addEventListener('animationend', () => {
+                sakura.remove();
+            });
+        }
+
+        // Create sakura every 200ms for more continuous effect
+        setInterval(createSakura, 200);
+
+        // Create initial sakura
+        for(let i = 0; i < 15; i++) {
+            setTimeout(createSakura, i * 200);
+        }
+    </script>
+</body>
+</html> 
